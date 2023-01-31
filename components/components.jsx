@@ -1,32 +1,35 @@
 const h1 = ({ children }) => {
   return (
     <h1 className='mb-5 text-center'>
-      <span className='bg-rose-900 font-bold text-[30px] text-white'>{children}</span>
+      <span className='bg-rose-900 font-bold text-[30px] text-slate-200	'>{children}</span>
     </h1>
   )
 }
 const h2 = ({ children }) => {
   return (
-    <h1 className='mt-5 mb-2'>
-      <span className=' font-bold text-[30px] text-white'>{children}</span>
-    </h1>
+    <h2 className='mt-5 mb-2'>
+      <span className=' font-bold text-[30px] text-slate-200	'>{children}</span>
+    </h2>
   )
 }
 const h3 = ({ children }) => {
   return (
-    <h1 className='mb-2'>
-      <span className=' font-bold text-[22px] text-white'>{children}</span>
-    </h1>
+    <h3 className='my-2'>
+      <span className=' font-bold text-[22px] text-slate-200'>{children}</span>
+    </h3>
   )
 }
 const p = ({ children }) => {
-  return <p className='text-white'>{children}</p>
+  return <p className='text-slate-200 my-1'>{children}</p>
+}
+const pre = ({ children }) => {
+  return <pre className='my-3 rounded overflow-hidden'>{children}</pre>
 }
 const ol = ({ children }) => {
-  return <ol className='text-white list-decimal ml-[20px] font-extrabold'>{children}</ol>
+  return <ol className='text-slate-200 list-decimal ml-[20px] font-extrabold'>{children}</ol>
 }
 const ul = ({ children }) => {
-  return <ul className='text-white list-disc ml-[20px] font-extrabold my-3'>{children}</ul>
+  return <ul className='text-slate-200 list-disc ml-[20px] font-extrabold my-3'>{children}</ul>
 }
 const li = ({ children }) => {
   return (
@@ -43,7 +46,9 @@ const em = ({ children }) => {
 }
 const strong = ({ children }) => {
   return (
-    <strong className='bg-rose-900 bg-opacity-70 text-white px-2 py-1 rounded'>{children}</strong>
+    <strong className='bg-neutral-800	 bg-opacity-60 text-red-600 text-sm font-bold  px-[4px] py-[3px] 	rounded'>
+      {children}
+    </strong>
   )
 }
 const a = ({ href, children }) => {
@@ -64,6 +69,7 @@ const components = {
   hr,
   a,
   strong,
-  em
+  em,
+  pre
 }
 export default components

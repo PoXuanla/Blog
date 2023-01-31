@@ -6,6 +6,7 @@ export const getMarkdownSlugs = () => {
   const markdowns = getAllMarkdownsSrc()
 
   return markdowns.map((location) => {
+    return location.replace('./markdown/','').replace('.md','')
     return location.split('/').pop().split('.').shift()
   })
 }
@@ -18,5 +19,5 @@ export const getAllMarkdownsFrontMatter = () => {
   })
 }
 export const getAllMarkdownsSrc = () => {
-  return glob.sync('./markdown/*.mdx')
+  return glob.sync('./markdown/**/*.md')
 }

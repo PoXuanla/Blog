@@ -5,7 +5,7 @@ export default function PostList({ post, className }) {
     <li
       className={`w-full p-3 rounded hover:bg-hover-primary transition-all duration-200 ${className}`}
     >
-      <Link href={`/posts/${post.slug}`}>
+      <Link href={`/posts/${post.categories}/${post.slug}`}>
         <h3 className='text-gray-300 hover:text-gray-200 text-xl font-bold tracking-wide whitespace-nowrap overflow-hidden text-ellipsis '>
           {post.title}
         </h3>

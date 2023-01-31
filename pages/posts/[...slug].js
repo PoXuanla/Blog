@@ -5,16 +5,16 @@ import { getMarkdownSlugs } from '@/utils/mdHandler'
 import rehypeHighlight from 'rehype-highlight'
 import remarkBreaks from 'remark-breaks'
 
-
 export default function Post({ source }) {
   return (
-    <div className='max-w-[500px] w-full mx-auto p-3'>
+    <div className='max-w-[700px] w-full mx-auto p-3'>
       <MDXRemote {...source} />
     </div>
   )
 }
-export async function getStaticProps({ params: { slug } }) {
-  const source = (await fs.promises.readFile(`./markdown/${slug}.mdx`)).toString()
+export async function getStaticProps({ params }) {
+  console.log(params)
+  const source = (await fs.promises.readFile(`./markdown/${params.slug.join('/')}.md`)).toString()
   const mdxSource = await serialize(source, {
     // made available to the arguments of any custom mdx component
     scope: {},
@@ -23,7 +23,7 @@ export async function getStaticProps({ params: { slug } }) {
     mdxOptions: {
       remarkPlugins: [remarkBreaks],
       rehypePlugins: [rehypeHighlight],
-      format: 'mdx'
+      format: 'md'
     },
     // Indicates whether or not to parse the frontmatter from the mdx source
     parseFrontmatter: true
@@ -31,8 +31,13 @@ export async function getStaticProps({ params: { slug } }) {
   return { props: { source: mdxSource } }
 }
 export async function getStaticPaths() {
-  const slugs = getMarkdownSlugs()
-  const paths = slugs.map((slug) => {
+  const location = getMarkdownSlugs()
+  // const slugs = location.map((item) => {
+  //   return item.split('/').pop()
+  // })
+  const paths = location.map((item, index) => {
+    const slug = item.split('/')
+    console.log(slug.join('/'))
     return {
       params: {
         slug
